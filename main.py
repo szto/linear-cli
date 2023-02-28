@@ -18,7 +18,7 @@ def callback():
 @app.command()
 def branch():
     """
-    linear 이슈를 불러와 branch 를 생성합니다.
+    Create a branch from lienar issue
     """
     client = _get_gql_client()
     query = _compose_gql_to_get_linear_issues()
@@ -32,7 +32,7 @@ def branch():
 
 
     questions = [
-        inquirer.List("feature", message="Choose features", choices=features),
+        inquirer.List("feature", message="Choose feature.", choices=features),
         inquirer.List("issue", message="What task are you working on?", choices=issues)
     ]
 
@@ -48,12 +48,10 @@ def branch():
 
 
 def _get_features() -> None:
-    features = ["feat", "fix", "chore", "docs", "refactor", "test", "style", "ci", "perf"]
-    return features
+    return ["feat", "fix", "chore", "docs", "refactor", "test", "style", "ci", "perf"]
 
 
 def _get_issues(data, team_key) -> list[str]:
-    # Build issueIdentifier
     issues = []
     for issue in data.get("viewer").get("assignedIssues").get("nodes"):
         title = issue.get("title").replace(" ", "-").replace("/", "")
