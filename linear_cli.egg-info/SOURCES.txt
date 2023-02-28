@@ -1,0 +1,8 @@
+README.md
+setup.py
+linear_cli.egg-info/PKG-INFO
+linear_cli.egg-info/SOURCES.txt
+linear_cli.egg-info/dependency_links.txt
+linear_cli.egg-info/entry_points.txt
+linear_cli.egg-info/requires.txt
+linear_cli.egg-info/top_level.txt
