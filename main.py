@@ -4,6 +4,7 @@ import inquirer
 import typer
 from gql import gql, Client
 from gql.transport.aiohttp import AIOHTTPTransport
+from graphql import DocumentNode
 
 app = typer.Typer()
 
@@ -15,40 +16,20 @@ def callback():
     """
 
 @app.command()
-def branch(feat: str = typer.Argument("feat", help="feat, fix, chore, etc")):
+def branch():
     """
-    linear 로 branch 를 생성합니다.
+    linear 이슈를 불러와 branch 를 생성합니다.
     """
     client = _get_gql_client()
-
-    query = gql(
-        """
-        query {
-            teams { nodes { key } }
-            organization { gitBranchFormat }
-            viewer {
-                id
-                name
-                email
-                assignedIssues (first: 10) { nodes { title number previousIdentifiers } }
-            }
-        }
-    """
-    )
+    query = _compose_gql_to_get_linear_issues()
 
     # Get format
     data = client.execute(query)
-    branch_format = data.get("organization").get("gitBranchFormat")
     team_key = data.get("teams").get("nodes")[0].get("key")
 
-    # Build issueIdentifier
-    issues = []
-    for issue in data.get("viewer").get("assignedIssues").get("nodes"):
-        title = issue.get("title").replace(" ", "-").replace("/", "")
-        number = issue.get("number")
-        issues.append(f"{team_key}-{number}-{title}".lower())
+    features = _get_features()
+    issues = _get_issues(data=data, team_key=team_key)
 
-    features = ["feat", "fix", "chore", "docs", "refactor", "test", "style", "ci", "perf"]
 
     questions = [
         inquirer.List("feature", message="Choose features", choices=features),
@@ -66,7 +47,39 @@ def branch(feat: str = typer.Argument("feat", help="feat, fix, chore, etc")):
     typer.echo(f"gh pr create {feature_selected}/{issue_selected}")
 
 
-def _get_gql_client():
+def _get_features() -> None:
+    features = ["feat", "fix", "chore", "docs", "refactor", "test", "style", "ci", "perf"]
+    return features
+
+
+def _get_issues(data, team_key) -> list[str]:
+    # Build issueIdentifier
+    issues = []
+    for issue in data.get("viewer").get("assignedIssues").get("nodes"):
+        title = issue.get("title").replace(" ", "-").replace("/", "")
+        number = issue.get("number")
+        issues.append(f"{team_key}-{number}-{title}".lower())
+    return issues
+
+
+def _compose_gql_to_get_linear_issues() -> DocumentNode:
+    return gql(
+        """
+        query {
+            teams { nodes { key } }
+            organization { gitBranchFormat }
+            viewer {
+                id
+                name
+                email
+                assignedIssues (first: 20) { nodes { title number previousIdentifiers } }
+            }
+        }
+    """
+    )
+
+
+def _get_gql_client() -> Client:
     return Client(
         transport=AIOHTTPTransport(
         url="https://api.linear.app/graphql",
