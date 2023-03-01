@@ -3,7 +3,7 @@ import os
 import inquirer
 import typer
 from gql import gql, Client
-from gql.transport.aiohttp import AIOHTTPTransport
+from gql.transport.requests import RequestsHTTPTransport
 from graphql import DocumentNode
 
 app = typer.Typer()
@@ -79,11 +79,16 @@ def _compose_gql_to_get_linear_issues() -> DocumentNode:
 
 def _get_gql_client() -> Client:
     return Client(
-        transport=AIOHTTPTransport(
+        transport=RequestsHTTPTransport(
         url="https://api.linear.app/graphql",
+        use_json=True,
         headers={
             "Content-type": "application/json",
             "Authorization": os.getenv("LINEAR_API_KEY"),
             },
-        )
+        ),
     )
+
+
+if __name__ == "__main__":
+    typer.run(branch)

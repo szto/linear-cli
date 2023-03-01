@@ -1,0 +1,23 @@
+[GLOBAL]
+pants_version = "2.15.0"
+
+backend_packages = [
+  "pants.backend.python",
+]
+
+[python]
+interpreter_constraints = ["==3.9.*"]
+enable_resolves = true
+resolves = { python-default = "lockfiles/python.lock" }
+tailor_requirements_targets = false
+tailor_ignore_empty_init_files = false
+
+[python-bootstrap]
+search_path = ["<PATH>", "<PYENV>"]
+
+[anonymous-telemetry]
+enabled = true
+repo_id = "a291b714-4b91-4b0a-8450-55df904d0e6e"
+
+[source]
+root_patterns = ["/"]

@@ -12,6 +12,6 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        linear=main:app
+        linear=src/main:app
     """,
 )
