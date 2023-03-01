@@ -48,7 +48,7 @@ def branch(api_key: str = typer.Argument(..., envvar="LINEAR_API_KEY", show_envv
 
 
 def _get_features() -> list[str]:
-    return ["feat", "fix", "chore", "docs", "refactor", "test", "style", "ci", "perf"]
+    return ["feat", "fix", "chore", "docs", "refactor", "test"]
 
 
 def _get_issues(data: Any, team_key: str) -> list[str]:
