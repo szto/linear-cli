@@ -2,7 +2,12 @@
 pants_version = "2.15.0"
 
 backend_packages = [
-  "pants.backend.python",
+    "pants.backend.python",
+    "pants.backend.python.lint.black",
+    "pants.backend.python.lint.flake8",
+    "pants.backend.python.lint.isort",
+    "pants.backend.build_files.fmt.black",
+    "pants.backend.python.typecheck.mypy",
 ]
 
 [python]
@@ -21,3 +26,13 @@ repo_id = "a291b714-4b91-4b0a-8450-55df904d0e6e"
 
 [source]
 root_patterns = ["/"]
+
+[black]
+config="pyproject.toml"
+lockfile = "lockfiles/black.lock"
+export = false
+
+[isort]
+config=["pyproject.toml"]
+lockfile = "lockfiles/isort.lock"
+export = false

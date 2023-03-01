@@ -2,7 +2,7 @@ python_sources(
     name="src",
     dependencies=[
         "//:requirements",
-    ]
+    ],
 )
 
 pex_binary(
@@ -10,5 +10,5 @@ pex_binary(
     entry_point="main.py",
     dependencies=[
         ":src",
-    ]
+    ],
 )
