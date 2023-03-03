@@ -1,9 +1,19 @@
 # linear cli
 
 ## Pre-requisites
-```zsh
+- set linear api key
+```shell
 LINEAR_API_KEY="set your api key here"
 ```
+- install pants
+```shell
+curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh
+
+or 
+
+brew install pantsbuild/tap/pants
+```
+- install python 3.9
 
 ## Installation
 
