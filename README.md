@@ -1,4 +1,4 @@
-# linear cli for Payhere
+# linear cli
 
 ## Pre-requisites
 ```zsh
