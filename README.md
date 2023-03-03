@@ -18,7 +18,7 @@ brew install pantsbuild/tap/pants
 ## Installation
 
 ```zsh
-pants pacakge src/linear:linear
+pants package ::
 mv dist/src/linear.pex ~/.local/bin/linear.pex
 
 in .zshrc
