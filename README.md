@@ -19,10 +19,10 @@ brew install pantsbuild/tap/pants
 
 ```zsh
 pants package ::
-mv dist/src/linear.pex ~/.local/bin/linear.pex
+mv dist/src/linear.pex /usr/local/bin/linear
+```
 
 in .zshrc
-alias linear="LINEAR_API_KEY="your api key" ~/.local/bin/linear.pex"
 ```
 
 ## Run
