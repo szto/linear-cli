@@ -12,7 +12,7 @@ echo 'export LINEAR_ORGANIZATION=set your organization name for web' >> ~/.zshen
 ## Installation
 
 ```zsh
-download [linear.zip](https://github.com/szto/linear-cli/releases/download/0.0.1/linear.zip)
+download [linear.zip](https://github.com/szto/linear-cli/releases/download/0.0.2/linear.zip)
 unzip linear.zip
 sodo mv dist/src/linear.pex /usr/local/bin/linear
 ```
@@ -26,7 +26,7 @@ linear issue {issue_number} -- open issue in browser
 ```
 
 ## Donwload
-[0.0.1 download](https://github.com/szto/linear-cli/releases/tag/0.0.1) - download linear.zip
+[0.0.2 download](https://github.com/szto/linear-cli/releases/tag/0.0.2) - download linear.zip
 
 ## Development
 - install pants
