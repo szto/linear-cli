@@ -18,7 +18,9 @@ def callback() -> None:
 
 
 @app.command()
-def branch(api_key: str = typer.Argument(..., envvar="LINEAR_API_KEY", show_envvar=False)) -> None:
+def branch(
+    api_key: str = typer.Argument(..., envvar="LINEAR_API_KEY", show_envvar=False),
+) -> None:
     """
     create linear branch
     """
@@ -58,11 +60,14 @@ def open() -> None:
 
 
 @app.command()
-def issue(issue_number: str) -> None:
+def issue(
+    issue_number: str,
+    organization: str = typer.Argument(..., envvar="LINEAR_ORGANIZATION", show_envvar=False),
+) -> None:
     """
     open linear issue
     """
-    os.system(f'open "" https://linear.app/payhere/issue/{issue_number}')
+    os.system(f'open "" https://linear.app/{organization}/issue/{issue_number}')
 
 
 def copy_to_clipboard(text: str) -> None:

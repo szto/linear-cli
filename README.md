@@ -5,6 +5,7 @@
 ```shell
 for zsh
 echo 'export LINEAR_API_KEY=set your api key here' >> ~/.zshenv
+echo 'export LINEAR_ORGANIZATION=set your organization name for web' >> ~/.zshenv
 ```
 - You may need to install python 3.9 or above.
 
