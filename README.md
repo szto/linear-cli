@@ -30,3 +30,6 @@ linear branch -- choose linear issue to create branch
 linear open -- open linear application
 linear issue {issue_number} -- open issue in browser
 ```
+
+## Donwload
+[0.0.1 download](https://github.com/szto/linear-cli/releases/tag/0.0.1)
