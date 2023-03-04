@@ -3,7 +3,7 @@
 ## Pre-requisites
 - set linear api key
 ```shell
-in .zshenv for zsh
+zsh
 echo 'export LINEAR_API_KEY=set your api key here' >> ~/.zshenv
 ```
 - install pants
