@@ -32,4 +32,4 @@ linear issue {issue_number} -- open issue in browser
 ```
 
 ## Donwload
-[0.0.1 download](https://github.com/szto/linear-cli/releases/tag/0.0.1)
+[0.0.1 download](https://github.com/szto/linear-cli/releases/tag/0.0.1) - download linear.zip
