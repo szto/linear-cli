@@ -3,7 +3,8 @@
 ## Pre-requisites
 - set linear api key
 ```shell
-LINEAR_API_KEY="set your api key here"
+in .zshenv for zsh
+echo 'export LINEAR_API_KEY=set your api key here' >> ~/.zshenv
 ```
 - install pants
 ```shell
@@ -19,10 +20,7 @@ brew install pantsbuild/tap/pants
 
 ```zsh
 pants package ::
-mv dist/src/linear.pex /usr/local/bin/linear
-```
-
-in .zshrc
+sodo mv dist/src/linear.pex /usr/local/bin/linear
 ```
 
 ## Run
