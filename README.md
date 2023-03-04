@@ -1,25 +1,18 @@
 # linear cli
 
 ## Pre-requisites
-- set linear api key
+- set linear api key [link](https://github.com/szto/linear-cli/blob/main/src/main.py)
 ```shell
-zsh
+for zsh
 echo 'export LINEAR_API_KEY=set your api key here' >> ~/.zshenv
 ```
-- install pants
-```shell
-curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh
-
-or 
-
-brew install pantsbuild/tap/pants
-```
-- install python 3.9
+- You may need to install python 3.9 or above.
 
 ## Installation
 
 ```zsh
-pants package ::
+download [linear.zip](https://github.com/szto/linear-cli/releases/download/0.0.1/linear.zip)
+unzip linear.zip
 sodo mv dist/src/linear.pex /usr/local/bin/linear
 ```
 
@@ -33,3 +26,14 @@ linear issue {issue_number} -- open issue in browser
 
 ## Donwload
 [0.0.1 download](https://github.com/szto/linear-cli/releases/tag/0.0.1) - download linear.zip
+
+## Development
+- install pants
+```shell
+curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh
+
+or 
+
+brew install pantsbuild/tap/pants
+```
+- install python 3.9
